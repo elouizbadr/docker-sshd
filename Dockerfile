@@ -12,10 +12,10 @@ RUN mkdir /var/run/sshd && \
     mkdir /root/.ssh && chmod 700 /root/.ssh && \
     touch /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys
 
-COPY id_rsa.pub /root/.ssh
+COPY rsa_key.pub /root/.ssh
 
-RUN cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys && \
-    rm /root/.ssh/id_rsa.pub && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN cat /root/.ssh/rsa_key.pub >> /root/.ssh/authorized_keys && \
+    rm /root/.ssh/rsa_key.pub && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 22
 
