@@ -3,7 +3,8 @@ LABEL maintainer="ELOUIZ BADR <elouiz.badr@gmail.com>"
 LABEL description="A Dockerized SSH Server."
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates openssh-server python && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates apt-transport-https openssh-server python && \
     mkdir /var/run/sshd && \
     sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -ri 's/^#?PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
